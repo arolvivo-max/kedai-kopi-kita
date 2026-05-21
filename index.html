@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedai Kopi Kita - Landing Page</title>
+    <!-- Font dari Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icon dari FontAwesome (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary-color: #4E342E; /* Coklat Kopi Gelap */
+            --secondary-color: #8D6E63; /* Coklat Kopi Muda */
+            --accent-color: #D7CCC8; /* Beige */
+            --text-color: #3E2723;
+            --bg-color: #FAFAFA;
+            --white: #ffffff;
+            --green-tea: #558B2F; /* Warna Aksen Segar */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- HEADER / NAVBAR --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--green-tea);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-tea);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background-color: var(--green-tea);
+            color: var(--white);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #33691E;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-info {
+            background: var(--accent-color);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-section {
+            background-color: #EFEBE9;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--green-tea);
+            margin: 10px auto 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-img {
+            height: 200px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .menu-content {
+            padding: 1.5rem;
+        }
+
+        .menu-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-price {
+            color: var(--green-tea);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        /* --- LOCATION & MAP SECTION --- */
+        .location-section {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .location-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .location-map {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- FOOTER & SOSMED --- */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--green-tea);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .location-section {
+                flex-direction: column;
+            }
+            .location-map {
+                width: 100%;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Kedai Kopi <span>Kita</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#lokasi">Lokasi</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Kedai Kopi Kita</h1>
+            <p>Rasa Kopi Terbaik Untuk Hari Terbaikmu</p>
+            <a href="#menu" class="btn">Lihat Menu</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Selamat Datang di Kedai Kopi Kita</h2>
+                <p>Nikmati suasana yang nyaman dengan aroma kopi segar kami.</p>
+                
+                <div class="about-info">
+                    <h3><i class="fas fa-map-marker-alt"></i> Alamat Kami:</h3>
+                    <p>Jl. Nusantara No. 45, Rt/Rw 001/002<br>
+                    Kel. Harapan Jaya, Kec. Makmur<br>
+                    Jakarta Selatan, DKI Jakarta 12345</p>
+                    <br>
+                    <h3><i class="fas fa-clock"></i> Jam Buka:</h3>
+                    <p>Senin - Minggu: 08.00 - 22.00 WIB</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Menu Favorit</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Espresso Solo</h3>
+                    <div class="menu-price">Rp 18.000</div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Cappuccino Creamy</h3>
+                    <div class="menu-price">Rp 25.000</div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Signature Latte</h3>
+                    <div class="menu-price">Rp 28.000</div>
+                </div>
+            </div>
+            <div class="menu-card">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1559307834-7f1faf2d1ccb?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');"></div>
+                <div class="menu-content">
+                    <h3 class="menu-title">Croissant Butter</h3>
+                    <div class="menu-price">Rp 22.000</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & MAP SECTION -->
+    <section id="lokasi" class="section">
+        <h2 class="section-title" style="display:block; text-align:center;">Lokasi Kedai Kopi</h2>
+        <div class="location-section">
+            <div class="location-info">
+                <h3>Kunjungi Kami</h3>
+                <p>Kami berlokasi di pusat kota dengan lahan parkir yang luas. Datang dan nikmati kopi terbaik kami!</p>
+                <br>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Alamat:</strong><br>Jl. Nusantara No. 45, Jakarta Selatan</p>
+                <br>
+                <p><i class="fas fa-phone-alt"></i> <strong>Kontak:</strong><br>+62 812 3456 7890</p>
+            </div>
+            
+            <div class="location-map">
+                <!-- GANTI KODE DIBAWAH INI DENGAN GOOGLE MAPS ANDA -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0!2d106.8176!3d-6.2615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTUnNDAuMCJTIDEwNsK0OCc0MC42Ilc!5e0!3m2!1sid!2sid!4v1600000000000!5m2!1sid!2sid" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer>
+        <h3>Kedai Kopi Kita</h3>
+        <p>Kopi terbaik harga terjangkau</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/6281234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        
+        <p class="copyright">&copy; 2024 Kedai Kopi Kita. All Rights Reserved.</p>
+    </footer>
+
+</body>
+  </html>
